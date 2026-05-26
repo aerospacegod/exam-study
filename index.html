@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>B787 Exam Review: Fuel, NGS, Fire Protection & APU | Correct Answers with References</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef3f7;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            color: #0c2e42;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #144d66, #1a6f8f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .header p {
+            color: #2c6b8c;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            border-bottom: 2px solid #c0d9e8;
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        /* card grid */
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+
+        /* question card */
+        .q-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: all 0.2s;
+            border: 1px solid #dde9f0;
+        }
+
+        .q-card:hover {
+            box-shadow: 0 20px 30px -12px rgba(0, 48, 73, 0.12);
+        }
+
+        .q-header {
+            background: #f9fcff;
+            padding: 1.2rem 1.8rem;
+            border-bottom: 1px solid #e2edf4;
+        }
+
+        .q-num {
+            display: inline-block;
+            background: #1f6e8c;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.7rem;
+        }
+
+        .q-text {
+            font-size: 1.28rem;
+            font-weight: 600;
+            color: #0b3b4f;
+            line-height: 1.4;
+        }
+
+        .options-area {
+            padding: 1.2rem 1.8rem 0.8rem 1.8rem;
+            background: white;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.7rem 0.9rem;
+            margin: 0.4rem 0;
+            border-radius: 20px;
+            background: #ffffff;
+            transition: background 0.2s;
+            border: 1px solid #e2edf4;
+        }
+
+        .option.correct-highlight {
+            background: #e0f2e9;
+            border-left: 6px solid #2c9b6e;
+            border-color: #c0e0d2;
+        }
+
+        .option-letter {
+            font-weight: 700;
+            min-width: 2rem;
+            font-size: 1rem;
+            color: #1f6e8c;
+        }
+
+        .option-text {
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #1e3b4c;
+            font-weight: 450;
+            flex: 1;
+        }
+
+        .reference-block {
+            background: #f4f9fe;
+            margin: 0.8rem 1.8rem 1.5rem 1.8rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            color: #2c5f7a;
+            border-left: 4px solid #7fbbd3;
+            font-family: 'Segoe UI', monospace;
+        }
+
+        .reference-label {
+            font-weight: 700;
+            color: #0f5b7a;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .reference-text {
+            color: #1d5a77;
+        }
+
+        hr {
+            margin: 0.2rem 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #6c8e9e;
+            border-top: 1px solid #cde0e8;
+            padding-top: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .q-text {
+                font-size: 1.08rem;
+            }
+            .option-text {
+                font-size: 0.9rem;
+            }
+            .q-header {
+                padding: 1rem;
+            }
+            .options-area {
+                padding: 1rem;
+            }
+            .reference-block {
+                margin: 0.8rem 1rem 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>✈️ B787 Technical Exam Prep</h1>
+        <p>Fuel · NGS · Fire Protection · APU | verified answers with references</p>
+    </div>
+
+    <div class="questions-list" id="qaContainer"></div>
+    <footer>
+        References from Boeing 787 Training Student Lab Notebook (Block 5 Book 1).<br>
+        Correct answers highlighted in green. Each statement cited directly from source.
+    </footer>
+</div>
+
+<script>
+    // Data array with questions, options, correct index (0-based), and direct reference text
+    const questionsData = [
+        { // 1
+            text: "When is the engine fire bottle discharge squibs armed?",
+            options: [
+                "At Power up",
+                "When engine fire is detected",
+                "When the engine fire switch is pulled out"
+            ],
+            correct: 2,
+            reference: "After the fire switch is armed, turn it to the DISCH 1 or DISCH 2 position. This will set a fire bottle to use… When the fire switch is unlocked, pull the fire switch to arm it. (Page 562)"
+        },
+        { // 2
+            text: "Where do the Auxiliary Power Unit (APU) fire detector elements send their signal to?",
+            options: [
+                "Propulsion Fire Protection System (PFPS) function in the CCR cabinets",
+                "APU Controller (APUC)",
+                "Main Engine Data Concentrator (MEDC)"
+            ],
+            correct: 1,
+            reference: "The fire detectors send signals to remote data concentrators (RDC). The RDCs send the signals on the CDN. The CDN sends the signals to the PFPS function in the CCR cabinets. APU controller (APUC) monitors fire detection logic. (Page 574 & 570)"
+        },
+        { // 3
+            text: "How is the lavatory waste compartment fire extinguisher bottle contents discharged in the waste bin?",
+            options: [
+                "Operates automatically when the temperature reaches a certain point and melts the fusible end caps",
+                "It is automatic in operation with the squib being operated when the associated lavatory smoke detector senses a fire",
+                "It is manual in operation by selecting ARM and DISCH on any Cabin Attendant Panel (CAP)"
+            ],
+            correct: 0,
+            reference: "The container operates automatically when the temperature of the end caps increases to 170°F to 177°F. At this temperature, the fusible alloy that seals the end caps melts and releases the extinguishing agent. (Page 734)"
+        },
+        { // 4
+            text: "How is the need for fuel measuring sticks overcome?",
+            options: [
+                "Measuring sticks are still fitted to validate the levels if required",
+                "Use of the 2 wiring harnesses and separate sensors increases reliability",
+                "Capacitive level sensors do not require measuring sticks"
+            ],
+            correct: 1,
+            reference: "Use of the 2 wiring harnesses and separate sensors increases reliability and removes the need for measuring sticks. (Page 280) Also 'There are no measuring sticks.' (Page 252)"
+        },
+        { // 5
+            text: "What controls the refuel valves?",
+            options: [
+                "Fuel Quantity Management System (FQMS) function.",
+                "Fuel Quantity Indicating Systems (FQIS) Computer.",
+                "A switch selection on the fuel control panel"
+            ],
+            correct: 0,
+            reference: "The FQMS function controls the pressure fueling system: Controls the refuel valves - Closes refuel valves when fuel quantity target values are met. (Page 58)"
+        },
+        { // 6
+            text: "What causes the surge tank pressure relief valve to open?",
+            options: [
+                "A blocked center tank vent line",
+                "A blocked main tank vent line",
+                "A blocked flame arrestor"
+            ],
+            correct: 2,
+            reference: "The surge tank pressure relief valve operates if the flame arrestor is blocked. An open pressure relief valve shows that there is a blocked vent scoop or flame arrestor. (Page 42)"
+        },
+        { // 7
+            text: "How to prevent water build-up in the main tanks?",
+            options: [
+                "Using jet pumps that are supplied motive flow from the override/jettison pumps",
+                "Using water scavenge jet pumps that operate on fuel pump motive flow and pressure.",
+                "Water accumulated in the main tanks is scavenged by the DC fuel pump only"
+            ],
+            correct: 1,
+            reference: "The water scavenge jet pumps prevent buildup of water in each main tank. The jet pumps operate on fuel pump flow and pressure. Motive flow comes from the aft boost pump in each main tank. (Page 138)"
+        },
+        { // 8
+            text: "What does the FQMS monitor the fuel boost pumps for?",
+            options: [
+                "Temperature and Motor Variable frequency",
+                "Output pressure and internal temperature",
+                "Output pressure only"
+            ],
+            correct: 1,
+            reference: "The fuel boost pumps and the O/J pumps have a pressure switch and a temperature switch. The FQMS monitors the pressure, temperature, and operation of the pump. (Page 101)"
+        },
+        { // 9
+            text: "What happens to the Nitrogen Generation System (NGS) Cabin Shutoff Valve (SOV) during a normal shutdown?",
+            options: [
+                "It closes immediately.",
+                "It remains open during the cooldown period to prevent excessive back pressure.",
+                "It is only grounded closed during a non-normal shutdown. It remains open during all other operations."
+            ],
+            correct: 1,
+            reference: "For normal shutdown of the NGS, all NGS valves remain in their last commanded position. This makes sure the MDC does not have a back-pressure condition as it shuts down. (Page 323)"
+        },
+        { // 10
+            text: "What happens to the Nitrogen Generation System (NGS) system during refuelling?",
+            options: [
+                "The NGS goes to a low flow setting",
+                "The NGS does not operate",
+                "Refuelling has no effect on the NGS"
+            ],
+            correct: 1,
+            reference: "These are the conditions that cause the NGS to shutdown normally: - Airplane refueling. (Page 323)"
+        },
+        { // 11
+            text: "Which fuel tank would normally supply fuel to the Auxiliary Power Unit (APU)?",
+            options: [
+                "Left main tank",
+                "Right main tank",
+                "Centre tank"
+            ],
+            correct: 0,
+            reference: "APU fuel feed usually comes from the left main fuel tank. The left aft boost pump is the primary source of APU fuel pressure. (Page 182)"
+        },
+        { // 12
+            text: "When will you need to reset the Auxiliary Power Unit (APU) fire protection system by carrying out a FIRE/OVHT TEST on P5?",
+            options: [
+                "During a manual emergency shutdown using the APU FIRE SHUTDOWN switch on the P40 panel.",
+                "During a manual emergency shutdown using the APU Fire Switch.",
+                "If you have attempted to start the APU on battery power only and it fails to start."
+            ],
+            correct: 1,
+            reference: "If the APU is shut down with the APU fire switch, you cannot start the APU again. You must reset the APU fault protection system… Push the FIRE/OVHT TEST switch on the P5 overhead panel for 2 seconds. This resets the fault detection system. (Page 1015)"
+        },
+        { // 13
+            text: "How is the Auxiliary Power Unit (APU) fuel pump driven?",
+            options: [
+                "Mechanically driven directly from the gearbox assembly.",
+                "By a DC electric motor controlled by the APUC via a Motor Controller",
+                "By a DC electric motor controlled by the APUC via a Motor Controller"
+            ],
+            correct: 1,   // identical B and C, but correct is DC motor + controller
+            reference: "The APU controller (APUC) sends signals to a motor controller in the fuel module. The motor controller controls the speed of the dc motor-driven fuel pump. (Page 931)"
+        },
+        { // 14
+            text: "How is Auxiliary Power Unit (APU) oil level sensed?",
+            options: [
+                "Using a float and magnet installed in the APU oil tank",
+                "Using a capacitance type device located in the gearbox oil sump",
+                "Using a float and magnet installed in the gearbox."
+            ],
+            correct: 1,
+            reference: "The APU oil level sensor is a capacitance type device. The sensor is in the gearbox oil sump. (Page 908)"
+        }
+    ];
+
+    function buildHtml() {
+        const container = document.getElementById('qaContainer');
+        if (!container) return;
+        let html = '';
+        questionsData.forEach((q, idx) => {
+            const qNumber = idx + 1;
+            const correctIdx = q.correct;
+            // build options with highlight class for correct answer
+            let optionsHtml = '';
+            q.options.forEach((opt, optIdx) => {
+                const isCorrect = (optIdx === correctIdx);
+                const letter = String.fromCharCode(65 + optIdx); // A, B, C
+                const highlightClass = isCorrect ? 'option correct-highlight' : 'option';
+                optionsHtml += `
+                    <div class="${highlightClass}">
+                        <div class="option-letter"><strong>${letter}.</strong></div>
+                        <div class="option-text">${escapeHtml(opt)}</div>
+                    </div>
+                `;
+            });
+
+            // build reference
+            const refText = escapeHtml(q.reference);
+            html += `
+                <div class="q-card">
+                    <div class="q-header">
+                        <div class="q-num">Question ${qNumber}</div>
+                        <div class="q-text">${escapeHtml(q.text)}</div>
+                    </div>
+                    <div class="options-area">
+                        ${optionsHtml}
+                    </div>
+                    <div class="reference-block">
+                        <span class="reference-label">📘 REFERENCE:</span>
+                        <span class="reference-text">${refText}</span>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', buildHtml);
+</script>
+</body>
+</html>
