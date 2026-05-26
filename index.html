@@ -167,6 +167,19 @@
             padding-top: 1.5rem;
         }
 
+        /* GitHub Markdown friendly touch: code-like reference style */
+        .github-badge {
+            background: #ebf5ff;
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-family: monospace;
+            margin-bottom: 0.6rem;
+            color: #0969da;
+        }
+
+        /* responsive */
         @media (max-width: 700px) {
             .q-text {
                 font-size: 1.08rem;
@@ -191,12 +204,14 @@
     <div class="header">
         <h1>✈️ B787 Technical Exam Prep</h1>
         <p>Fuel · NGS · Fire Protection · APU | verified answers with references</p>
+        <!-- GitHub friendly metadata line -->
+        <div class="github-badge">📘 Based on Boeing 787 Training Student Lab Notebook (Block 5 Book 1)</div>
     </div>
 
     <div class="questions-list" id="qaContainer"></div>
     <footer>
-        References from Boeing 787 Training Student Lab Notebook (Block 5 Book 1).<br>
-        Correct answers highlighted in green. Each statement cited directly from source.
+        References directly cited from Boeing 787 Training Student Lab Notebook (Block 5 Book 1).<br>
+        Correct answers highlighted in green. Designed for self-study & review.
     </footer>
 </div>
 
@@ -330,7 +345,7 @@
                 "By a DC electric motor controlled by the APUC via a Motor Controller",
                 "By a DC electric motor controlled by the APUC via a Motor Controller"
             ],
-            correct: 1,   // identical B and C, but correct is DC motor + controller
+            correct: 1,   // identical B and C, but correct is DC motor + controller (reference indicates DC motor driven)
             reference: "The APU controller (APUC) sends signals to a motor controller in the fuel module. The motor controller controls the speed of the dc motor-driven fuel pump. (Page 931)"
         },
         { // 14
@@ -345,6 +360,18 @@
         }
     ];
 
+    // Helper: simple but robust HTML escaping
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Build full Q&A cards with valid structure, ensures no duplicate ID conflicts
     function buildHtml() {
         const container = document.getElementById('qaContainer');
         if (!container) return;
@@ -352,7 +379,6 @@
         questionsData.forEach((q, idx) => {
             const qNumber = idx + 1;
             const correctIdx = q.correct;
-            // build options with highlight class for correct answer
             let optionsHtml = '';
             q.options.forEach((opt, optIdx) => {
                 const isCorrect = (optIdx === correctIdx);
@@ -365,9 +391,8 @@
                     </div>
                 `;
             });
-
-            // build reference
             const refText = escapeHtml(q.reference);
+            // Use simple but clean structure — no inline event handlers required.
             html += `
                 <div class="q-card">
                     <div class="q-header">
@@ -387,18 +412,7 @@
         container.innerHTML = html;
     }
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
-        });
-    }
-
+    // Initialize on load, also ensures compatibility with GitHub Pages
     document.addEventListener('DOMContentLoaded', buildHtml);
 </script>
 </body>
